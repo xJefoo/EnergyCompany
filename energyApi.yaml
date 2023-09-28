@@ -49,13 +49,13 @@ paths:
               schema:
                 type: object
                 properties:
-                  id_fatura:
+                  numero_fatura:
                     type: string
                   status:
                     type: string
                     enum: [criada, paga, cancelada]
               example:
-                id_fatura: "12345"
+                numero_fatura: "12345"
                 status: "criada"
         '400':
           description: Cliente inválido fornecido
@@ -67,7 +67,7 @@ paths:
                   message:
                     type: string
               example:
-                message: "Cliente inválido fornecido"
+                message: "Cliente fornecido é inválido"
 
   /api/faturas/{numero_fatura}:
     get:
@@ -88,7 +88,7 @@ paths:
               schema:
                 type: object
                 properties:
-                  id_fatura:
+                  numero_fatura:
                     type: string
                   valor:
                     type: number
@@ -97,21 +97,10 @@ paths:
                   nome_cliente:
                     type: string
               example:
-                id_fatura: "12345"
+                numero_fatura: "12345"
                 valor: 100.0
                 descricao: "Serviços de energia"
                 nome_cliente: "Cliente Exemplo"
-        '400':
-          description: ID inválido fornecido
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-              example:
-                message: "ID inválido fornecido"
         '404':
           description: Fatura não encontrada
           content:
